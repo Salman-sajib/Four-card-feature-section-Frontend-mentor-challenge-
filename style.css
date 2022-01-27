@@ -1,0 +1,268 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========  End of css reset  ============ */
+
+:root {
+  --clr-primary-red: hsl(0, 78%, 62%);
+  --clr-primary-cyan: hsl(180, 62%, 55%);
+  --clr-primary-orange: hsl(34, 97%, 64%);
+  --clr-primary-blue: hsl(212, 86%, 64%);
+
+  --clr-neutral-very-dark-blue: hsl(234, 12%, 34%);
+  --clr-neutral-grayish-blue: hsl(229, 6%, 66%);
+  --clr-neutral-very-light-gray: hsl(0, 0%, 98%);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* =========  Typography  =========== */
+
+h1 {
+  font-size: 1.7rem;
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+span {
+  font-weight: 700;
+}
+
+/* ==========  Container  ============= */
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--clr-neutral-very-light-gray);
+
+  padding: 3em 1em 1em;
+  display: grid;
+  place-items: center;
+}
+
+.featured-title,
+.featured-subtitle {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.featured-title {
+  color: var(--clr-neutral-very-dark-blue);
+  margin-bottom: 0.5em;
+}
+
+.featured-subtitle {
+  font-weight: 400;
+  margin-bottom: 2.5em;
+  color: var(--clr-neutral-grayish-blue);
+}
+
+/* ============  Card  =============== */
+
+.featured-cards > * + * {
+  margin-top: 2em;
+}
+
+.card {
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  padding: 2em;
+  border-radius: 0.5rem;
+  box-shadow: 0px 2px 15px 0px rgba(172, 172, 172, 0.5);
+}
+
+.card-supervisor {
+  border-top: 4px solid var(--clr-primary-cyan);
+}
+
+.card-team-builder {
+  border-top: 4px solid var(--clr-primary-red);
+}
+
+.card-karma {
+  border-top: 4px solid var(--clr-primary-orange);
+}
+
+.card-calculator {
+  border-top: 4px solid var(--clr-primary-blue);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  color: var(--clr-neutral-very-dark-blue);
+  margin-bottom: 0.5em;
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+  font-weight: 200;
+  color: var(--clr-neutral-grayish-blue);
+}
+
+.card-icon {
+  margin-top: 2.5em;
+  margin-left: auto;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  padding-top: 3em;
+}
+
+.fm-icon {
+  width: 25px;
+  border: 1px solid var(--clr-primary-orange);
+  border-radius: 50%;
+}
+
+.footer-title {
+  font-size: 0.8rem;
+  font-weight: 200;
+  color: var(--clr-neutral-very-dark-blue);
+}
+
+/* ============  Media quaries  ============ */
+
+@media only screen and (min-width: 43.75em) {
+  .featured-cards > * + * {
+    margin: 0;
+  }
+
+  .featured-cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "supervisor builder"
+      "karma calculator";
+
+    grid-gap: 2em;
+  }
+
+  .card-supervisor {
+    grid-area: supervisor;
+  }
+
+  .card-team-builder {
+    grid-area: builder;
+  }
+
+  .card-karma {
+    grid-area: karma;
+  }
+
+  .card-calculator {
+    grid-area: calculator;
+  }
+}
+
+@media only screen and (min-width: 56.25em) {
+  .featured-subtitle {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .featured-cards {
+    grid-template-areas:
+      ". builder ."
+      "supervisor builder calculator"
+      "supervisor karma calculator"
+      ". karma .";
+
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card {
+    max-width: 350px;
+  }
+}
